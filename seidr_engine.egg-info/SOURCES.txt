@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+seidr/__init__.py
+seidr/__main__.py
+seidr/cli.py
+seidr/forms.py
+seidr/lexicon.py
+seidr/poet.py
+seidr_engine.egg-info/PKG-INFO
+seidr_engine.egg-info/SOURCES.txt
+seidr_engine.egg-info/dependency_links.txt
+seidr_engine.egg-info/entry_points.txt
+seidr_engine.egg-info/top_level.txt
+tests/test_seidr.py
