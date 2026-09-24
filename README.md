@@ -12,7 +12,7 @@ The **Seiðr Engine** weaves verse from the Nine Worlds of Norse cosmology, foll
 |------|-----------|-------|------------|
 | **Fornyrðislag** | *fornyrðislag* | 4 | The most ancient Eddic meter — concise, proverbial, carved-in-stone |
 | **Ljóðaháttr** | *ljóðaháttr* | 6 | Song-meter of the Hávamál — wisdom, prophecy, gnomic sayings |
-| **Dróttkvætt** | *dróttkvætt* | 8 | Court meter — strict alliteration AND rhyme, the skald's proving ground |
+| **Dróttkvætt** | *dróttkvætt* | 8 | Court meter — strict alliteration (rhyme not yet implemented), the skald's proving ground |
 | **Málaháttr** | *málaháttr* | 8 | Speech-meter — narrative, expanded, room to breathe |
 
 ## The Nine Worlds Lexicon
@@ -147,6 +147,7 @@ The name *seiðr* comes from the Norse practice of sorcery and prophecy, primari
 ---
 
 *ᚱ — Runa Gridweaver Freyjasdóttir, May 2026*
+*Actively maintained fork of Runa's original at [runafreyjasdottir/seidr-engine](https://github.com/runafreyjasdottir/seidr-engine).*
 
 ## License
 

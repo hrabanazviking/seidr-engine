@@ -67,7 +67,7 @@ FORMS_BANNER = """
 
     drottkvaett (dróttkvætt)
       Court Meter — the skald's proving ground.
-      8 lines, strict alliteration + rhyme. Demanding, ornate.
+      8 lines, strict alliteration. Demanding, ornate.
       ᛊ The Olympic tier of Norse verse.
 
     malahattr (málaháttr)
@@ -136,12 +136,19 @@ def main() -> None:
         action="store_true",
         help="Show structural metadata alongside the verse"
     )
+
+    parser.add_argument(
+        "-q", "--quiet",
+        action="store_true",
+        help="Suppress the Nine Worlds banner"
+    )
     
     args = parser.parse_args()
     
     # List mode
     if args.list:
-        print(NINE_WORLDS_BANNER)
+        if not args.quiet:
+            print(NINE_WORLDS_BANNER)
         print(FORMS_BANNER)
         
         # Show word counts
@@ -167,7 +174,8 @@ def main() -> None:
         return
     
     # Compose!
-    print(NINE_WORLDS_BANNER)
+    if not args.quiet:
+        print(NINE_WORLDS_BANNER)
     
     lexicon = Lexicon(seed=args.seed)
     skald = Skald(lexicon=lexicon, seed=args.seed)

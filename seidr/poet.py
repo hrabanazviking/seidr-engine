@@ -206,7 +206,8 @@ class Skald:
     def _compose_drottkvaett(self, config: PoemConfig, form: PoeticForm) -> Stanza:
         """Compose a dróttkvætt stanza.
         
-        Structure: 8 lines, 4 couplets. Strict alliteration + rhyme.
+        Structure: 8 lines, 4 couplets. Strict alliteration.
+        (Internal rhyme not yet implemented.)
         This is the hardest form — we approximate with alliteration
         and aim for 6 syllables per line.
         """
@@ -287,7 +288,9 @@ class Skald:
             # Fall back to any domain
             entries = self.lexicon.get_words()
         groups = set(e.alliteration_group for e in entries if e.alliteration_group)
-        return self._rng.choice(list(groups)) if groups else "vowel"
+        # NB: sorted(), not list() — set iteration order depends on the
+        # per-process hash seed, which would break --seed reproducibility.
+        return self._rng.choice(sorted(groups)) if groups else "vowel"
     
     def _pick_unique_word(self, **kwargs) -> Optional[WordEntry]:
         """Pick a word that hasn't been used in this composition yet.

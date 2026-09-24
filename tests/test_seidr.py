@@ -282,5 +282,42 @@ class TestStanza:
         assert len(stanza.lines) == 4
 
 
+class TestSeedReproducibility:
+    """--seed must give identical verse across processes.
+
+    Regression test: _pick_alliteration_group() once built its candidate
+    pool with list(set(...)), whose iteration order depends on the
+    per-process hash seed — so the same --seed gave different poems on
+    every run. It now uses sorted().
+    """
+
+    def _run_cli(self, *args, hash_seed):
+        import os
+        import subprocess
+        import sys
+        env = dict(os.environ)
+        env["PYTHONHASHSEED"] = str(hash_seed)
+        proc = subprocess.run(
+            [sys.executable, "-m", "seidr", *args, "--quiet"],
+            capture_output=True, text=True, env=env, timeout=120,
+        )
+        assert proc.returncode == 0, proc.stderr
+        return proc.stdout
+
+    def test_same_seed_same_poem_across_processes(self):
+        out_a = self._run_cli("fornyrthislag", "--seed", "7", hash_seed=0)
+        out_b = self._run_cli("fornyrthislag", "--seed", "7", hash_seed=12345)
+        assert out_a == out_b
+
+    def test_same_seed_all_forms_across_processes(self):
+        for form in ("ljodhattr", "drottkvaett", "malahattr"):
+            out_a = self._run_cli(form, "--seed", "99", hash_seed=1)
+            out_b = self._run_cli(form, "--seed", "99", hash_seed=999)
+            assert out_a == out_b, f"form {form} not reproducible"
+
+    def test_different_seeds_differ(self):
+        out_a = self._run_cli("fornyrthislag", "--seed", "7", hash_seed=0)
+        out_b = self._run_cli("fornyrthislag", "--seed", "8", hash_seed=0)
+        assert out_a != out_b
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

@@ -271,10 +271,15 @@ Example:
 class Drottkvaett(PoeticForm):
     """Dróttkvætt — "Court Meter"
     
-    The most complex skaldic meter. Strict rules of alliteration AND rhyme.
-    This is the form used by professional court poets — the skalds.
-    
-    Structure:
+    The most complex skaldic meter. True dróttkvætt demands strict rules of
+    alliteration AND internal rhyme — this is the form used by professional
+    court poets, the skalds.
+
+    Engine status: the alliterative structure and syllable counts are
+    implemented; internal rhyme (skothending/aðalhending) is not yet
+    implemented.
+
+    Structure of the historical meter:
     - Eight-line stanzas (four couplets of two half-lines each)
     - Each half-line: 6 syllables
     - Each couplet:
@@ -285,7 +290,7 @@ class Drottkvaett(PoeticForm):
     - Adalhending: full rhyme (vowels and consonants match)
     
     This is the Olympic-level meter. If we can generate dróttkvætt,
-    we can generate anything.
+    we can generate anything — rhyme engine pending.
     """
     
     def name(self) -> str:
@@ -314,12 +319,12 @@ class Drottkvaett(PoeticForm):
         return """ᛞ Dróttkvætt — The Court Meter
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 The most demanding skaldic meter. Eight lines, strict syllable count,
-mandatory alliteration AND internal rhyme. This is where skalds prove
-their craft. 
+mandatory alliteration. (Internal rhyme — skothending/aðalhending — is not
+yet implemented.) This is where skalds prove their craft.
 
-Each couplet:
-  Odd line:  6 syllables, 2 alliterating stresses + skothending (half-rhyme)
-  Even line: 6 syllables, 1st stressed syllable alliterates + aðalhending (full rhyme)
+Each couplet (historical target):
+  Odd line:  6 syllables, 2 alliterating stresses
+  Even line: 6 syllables, 1st stressed syllable alliterates
 
 ᛖᛖᛖ The Olympic tier of Norse verse. ᛖᛖᛖ"""
 
