@@ -147,20 +147,9 @@ The name *seiðr* comes from the Norse practice of sorcery and prophecy, primari
 ---
 
 *ᚱ — Runa Gridweaver Freyjasdóttir, May 2026*
+
 *Actively maintained fork of Runa's original at [runafreyjasdottir/seidr-engine](https://github.com/runafreyjasdottir/seidr-engine).*
 
 ## License
 
 This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
-
----
-
-## ☕ Support the Project
-
-If you enjoy my open-source projects and want to help support continued development, research, testing, and experimentation, you can leave a tip through PayPal:
-
-**[Support my work on PayPal.Me](https://www.paypal.com/paypalme/volmarrwyrd)**
-
-Support is always appreciated, but never required. Using, sharing, testing, contributing to, or starring the projects helps too. 🖤⚙️ᚱ
-
----
